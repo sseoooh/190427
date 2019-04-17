@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.bit_etland.web.mapper.CustomerMapper">
+  	<!-- 로그인 -->
+  	<select id="selectCustomer" resultType="com.bit_etland.web.domain.CustomerDTO" parameterType="com.bit_etland.web.domain.CustomerDTO">
+  		SELECT
+  			CUSTOMER_ID customerId,
+  			CUSTOMER_NAME customerName,
+  			PASSWORD password,
+  			SSN ssn,
+  			PHONE phone,
+  			CITY city,
+  			ADDRESS address,
+  			POSTALCODE postalCode,
+  			PHOTO photo
+  			FROM CUSTOMERS
+  		WHERE CUSTOMER_ID LIKE #{customerId}
+  		AND PASSWORD LIKE #{password}
+  	</select>
+  	
+  	<!-- 업데이트 -->
+  	<update id="updateCustomer" parameterType="com.bit_etland.web.domain.CustomerDTO">
+  		UPDATE CUSTOMERS SET
+  			PASSWORD = #{password},
+  			PHONE = #{phone},
+  			CITY = #{city},
+  			ADDRESS = #{address},
+  			POSTALCODE = #{postalCode}
+  		WHERE CUSTOMER_ID LIKE #{customerId}
+  	</update>
+  	
+  	<!-- 삭제 -->
+  	<delete id="deleteCustomer" parameterType="com.bit_etland.web.domain.CustomerDTO">
+  		DELETE
+  		FROM CUSTOMERS
+  		WHERE CUSTOMER_ID LIKE #{customerId}
+  		AND PASSWORD LIKE #{password}
+  	</delete>
+  	
+  	<!-- 회원가입 -->
+  	<select id="insertCustomer" parameterType="com.bit_etland.web.domain.CustomerDTO">
+  		INSERT INTO CUSTOMERS(CUSTOMER_ID,
+  							  CUSTOMER_NAME,
+  							  PASSWORD, SSN,
+  							  PHONE,
+  							  CITY,
+  							  ADDRESS,
+  							  POSTALCODE,
+  							  PHOTO)
+  		VALUES(#{customerId},
+  			   #{customerName},
+  			   #{password},
+  			   #{ssn},
+  			   #{phone},
+  			   #{city},
+  			   #{address},
+  			   #{postalCode},
+  			   #{photo})
+  	</select>
+  	
+  </mapper>
