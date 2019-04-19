@@ -19,6 +19,8 @@ import com.bit_etland.web.service.CustomerServiceImpl;
 
 @RestController
 public class CustomerController {
+	private int blockSize;
+	private boolean existPrev;
 	private static final Logger logger = LoggerFactory.getLogger(CustomerController.class);
 	
 	@Autowired CustomerDTO custdto;
@@ -36,6 +38,8 @@ public class CustomerController {
 		System.out.println("MyBatis에서 넘어온 페이지번호" + page);
 		
 		int pageNum = Integer.parseInt(page);
+		
+		existPrev = (blockSize>=pageNum)?false:true;
 		
 		/* 게시글 시작하는 번호 */
 		String startRowNum = String.valueOf(pageSize * (pageNum - 1));

@@ -116,7 +116,6 @@ var cust = cust || {};
 					+'<th>사진</th>'
 					+'</tr>';
 				$.each(d.list,(i,j)=>{
-					alert("j.runm값"+j.rnum);
 				html +=	'<tr align="center">'
 					+'<td>'+j.rnum+'</td>'
 					+'<td>'+j.customerId+'</td>'
@@ -133,12 +132,20 @@ var cust = cust || {};
 				$(html).appendTo('#right_content');
 				
 		$('<div class="container"><ul id="ul" class="pagination"></ul></div>').appendTo('#right_content');
+		
 		let p=0;
 		let startPage=1;
 		let endPage=5;
 		
+		if(true){
+			$('<li><a>&laquo;</a></li>').appendTo('#ul')
+		}
+	
+		
 		for(i=startPage; i<=endPage; i++){
-			$('<li><a>'+ i + '</a></li>')
+		
+		$('<li><a>'+ i + '</a></li>')
+			
 			.appendTo('#ul')
 			.click(function(){
 				alert('클릭한 페이지번호 : ' + $(this).text());
@@ -146,6 +153,11 @@ var cust = cust || {};
 					
 				})
 		}
+		if(true){
+			$('<li><a>&raquo;</a></li>').appendTo('#ul')
+		}
+		
+		
 			});
 		};
 		return{init:init, modify:modify, leave:leave, join:join, list:list};
