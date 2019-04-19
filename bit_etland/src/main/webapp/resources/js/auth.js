@@ -72,7 +72,7 @@ auth =(()=>{
 							cust.leave();
 							break;
 						case 'list':
-							cust.list();
+							cust.list(1);
 							break;
 						}
 						})

@@ -12,7 +12,7 @@ public interface CustomerMapper {
 	//C
 	public void insertCustomer(CustomerDTO cust);
 	//R
-	public List<CustomerDTO> selectAllCustomers();
+	public List<CustomerDTO> selectAllCustomers(HashMap<String, String> hash);
 	public List<CustomerDTO> selectSomeCustomers(HashMap<String, Object> hash);
 	public CustomerDTO selectCustomer(CustomerDTO cust);
 	public int countCustomers();

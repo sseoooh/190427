@@ -13,7 +13,7 @@ public interface CustomerService {
 	//C
 	public void createCustomer(CustomerDTO cust);
 	//R
-	public List<CustomerDTO> findAllCustomers();
+	public List<CustomerDTO> findAllCustomers(HashMap<String, String> hash);
 	public List<CustomerDTO> findSomeCustomers(HashMap<String, Object> hash);
 	public CustomerDTO findCustomer(CustomerDTO cust);
 	public int countCustomers();

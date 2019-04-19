@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.bit_etland.web.domain.CustomerDTO;
 import com.bit_etland.web.mapper.CustomerMapper;
-import com.sun.javafx.collections.MappingChange.Map;
 
 @Service
 public class CustomerServiceImpl implements CustomerService{
@@ -18,11 +17,6 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public void createCustomer(CustomerDTO cust) {
 		custMap.insertCustomer(cust);
-	}
-
-	@Override
-	public List<CustomerDTO> findAllCustomers() {
-		return null;
 	}
 
 	@Override
@@ -37,8 +31,7 @@ public class CustomerServiceImpl implements CustomerService{
 
 	@Override
 	public int countCustomers() {
-		// TODO Auto-generated method stub
-		return 0;
+		return custMap.countCustomers();
 	}
 
 	@Override
@@ -51,6 +44,10 @@ public class CustomerServiceImpl implements CustomerService{
 		custMap.deleteCustomer(cust);
 	}
 
-	
+	@Override
+	public List<CustomerDTO> findAllCustomers(HashMap<String, String> hash) {
+		custMap.selectAllCustomers(hash);
+		return custMap.selectAllCustomers(hash);
+	}
 	
 }

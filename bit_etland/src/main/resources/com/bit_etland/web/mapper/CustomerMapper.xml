@@ -41,10 +41,11 @@
   	</delete>
   	
   	<!-- 회원가입 -->
-  	<select id="insertCustomer" parameterType="com.bit_etland.web.domain.CustomerDTO">
+  	<select id="insertCustomer" parameterType="com.bit_etland.web.domain.CustomerDTO" >
   		INSERT INTO CUSTOMERS(CUSTOMER_ID,
   							  CUSTOMER_NAME,
-  							  PASSWORD, SSN,
+  							  PASSWORD,
+  							  SSN,
   							  PHONE,
   							  CITY,
   							  ADDRESS,
@@ -59,6 +60,25 @@
   			   #{address},
   			   #{postalCode},
   			   #{photo})
+  	</select>
+  	<!-- 목록가져옴 -->
+  	<select id="selectAllCustomers" resultType="com.bit_etland.web.domain.CustomerDTO" parameterType="hashMap">
+  		SELECT
+  			@ROWNUM:=@ROWNUM+1 as rnum,
+	  		c.CUSTOMER_ID customerId,
+	  		c.CUSTOMER_NAME customerName,
+	  		c.PHONE,
+	  		c.CITY,
+	  		c.ADDRESS,
+	  		c.POSTALCODE,
+	  		c.PHOTO 	
+  		FROM CUSTOMERS c, (select @ROWNUM:=0) A
+  		ORDER BY rnum desc
+  		LIMIT ${startRowNum}, 5
+  	</select>
+  	<select id="countCustomers" resultType="int">
+  		SELECT COUNT(*)
+  		FROM CUSTOMERS
   	</select>
   	
   </mapper>

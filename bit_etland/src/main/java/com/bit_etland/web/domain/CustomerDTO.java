@@ -6,5 +6,5 @@ import lombok.Data;
 
 @Data @Component
 public class CustomerDTO {
-	private String customerId, customerName, password, ssn, phone, city, address, postalCode, photo;
+	private String rnum, customerId, customerName, password, ssn, phone, city, address, postalCode, photo;
 }
