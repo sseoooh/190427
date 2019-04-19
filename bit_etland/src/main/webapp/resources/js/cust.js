@@ -128,7 +128,7 @@ var cust = cust || {};
 					+'<td>'+j.photo+'</td>'
 					+'</tr>';
 				});
-				
+				//
 				html += '</table>';
 				$(html).appendTo('#right_content');
 				
